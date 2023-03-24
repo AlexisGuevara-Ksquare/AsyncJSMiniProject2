@@ -2,6 +2,9 @@
 // Get main container from HTML
 const pokeList = document.getElementById('pokeList');
 
+// Select all h2 tags inside pokeList
+const pokeNames = document.getElementById('redirectName');
+
 // Pokemon API
 let url = 'https://pokeapi.co/api/v2/pokemon/';
 
@@ -15,7 +18,7 @@ for (let i = 1; i <= 12; i++) {
 let showPokemon = (pokeData) => {
 
     // Get the pokemon type thru a map method so we can extract all we need and convert into a "p" tag
-    let poketypes = pokeData.types.map(type => `<p class="${type.type.name} tipo">${type.type.name}</p>`);
+    let poketypes = pokeData.types.map((type) => `<p class="${type.type.name} tipo">${type.type.name}</p>`);
     // Join the array
     poketypes = poketypes.join('');
 
@@ -36,8 +39,10 @@ let showPokemon = (pokeData) => {
         <img src="${pokeData.sprites.other['official-artwork'].front_default}" alt="${pokeData.name}">
     </div>
     <div class="pokemonInfo">
-        <div class="-nameContainer">
-            <h2 class="pokemonName">${pokeData.name}</h2>
+        <div class="nameContainer" id="redirectName">
+            <a href="https://pokemon.fandom.com/wiki/${pokeData.name}" target="_blank">
+                <h2 class="pokemonName">${pokeData.name}</h2>
+            </a>
         </div>
         <div class="pokemonTypes">
             ${poketypes}
@@ -48,6 +53,7 @@ let showPokemon = (pokeData) => {
     </div>
     `;
     pokeList.append(div);
+
 };
 
 // Execute function so it can load Pokemon
