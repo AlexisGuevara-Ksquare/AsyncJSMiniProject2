@@ -1,7 +1,7 @@
 
 # Pokedex App
 
-Welcome! This repo contains information for the mini project "Advice App".
+Welcome! This repo contains information for the mini project "Pokedex App".
 
 ## Team members
 
