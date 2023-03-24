@@ -3,4 +3,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.pokemon {
+    width: 100px;
+    height: 300px;
 }
