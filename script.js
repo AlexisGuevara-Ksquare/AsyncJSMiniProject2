@@ -1,18 +1,34 @@
 
+let pokemons = [];
+
 // Get main container from HTML
 const pokeList = document.getElementById('pokeList');
 
 // Select all h2 tags inside pokeList
 const pokeNames = document.getElementById('redirectName');
 
-// Pokemon API
-let url = 'https://pokeapi.co/api/v2/pokemon/';
+// Get searchbox and button from HTML
+const searchInput = document.querySelector('#poke-input');
+const searchBtn = document.querySelector('.btn-search');
 
-// Request 12 pokemons from the Pokemon API
-for (let i = 1; i <= 12; i++) {    
-    fetch(url + i)
-    .then((response) => response.json())
-    .then(data => showPokemon(data));
+// Pokemon API
+let url = 'https://pokeapi.co/api/v2/pokemon/'; 
+ 
+
+
+let main = async() => {
+    // Request 12 pokemons from the Pokemon API
+    for (let i = 1; i <= 12; i++) {    
+        let response = await fetch(url + i);
+        let pokemon = await response.json();
+        pokemons.push(pokemon);
+    }
+    showPokemons(pokemons);
+}
+
+let showPokemons = (pokemonsList) => {
+    pokeList.innerHTML = '';
+    pokemonsList.forEach((element) => showPokemon(element));
 }
 
 let showPokemon = (pokeData) => {
@@ -53,8 +69,25 @@ let showPokemon = (pokeData) => {
     </div>
     `;
     pokeList.append(div);
-
 };
 
-// Execute function so it can load Pokemon
-showPokemon();
+searchBtn.addEventListener('click', function(e) {
+    // Prevent of auto reload
+    e.preventDefault();
+
+    let filterPokemon = [];
+    
+    const search = searchInput.value.toLowerCase();
+
+    pokemons.forEach(pokemon => {
+        console.log(pokemon.name, pokemon.name.includes(search));
+
+        if(pokemon.name.includes(search)) {
+            filterPokemon.push(pokemon);
+        }
+    });
+    console.log(filterPokemon);
+    showPokemons(filterPokemon);
+});
+
+main();
