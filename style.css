@@ -16,9 +16,34 @@ form {
     margin: 2rem 0;
 }
 
-input:focus { 
+input {
+    color: inherit;
+    padding: 12px 10px;
+    width: 60vw;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border: none;
     outline: none;
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .35);
 }
+
+button {
+    background-color: white;
+    padding: 12px 10px;
+    /* width: 60vw; */
+    margin-left: 15px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 0 3rem -1rem rgba(0, 0, 0, .35);
+}
+
+button:active {
+    background-color: rgb(212, 212, 212);
+}
+
 /* Search bar */
 
 main {
