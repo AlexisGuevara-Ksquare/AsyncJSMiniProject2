@@ -3,8 +3,14 @@
 
 body {
     min-height: 100vh;
+    min-width: 100vh;
     background-color: rgb(239, 239, 239);
     font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 /* Search bar */
@@ -49,6 +55,8 @@ button:active {
 
 main {
     padding: 2rem;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 h2 {
@@ -62,9 +70,17 @@ a {
 
 .allPokemon{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    /* grid-template-rows: repeat(3, 1fr); */
     gap: 1rem;
+}
+
+/* Query to adapt 320 viewport */
+@media screen and (min-width: 450px) {
+    .allPokemon{
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
 }
 
 .pokemon {
