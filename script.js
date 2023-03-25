@@ -1,4 +1,5 @@
 
+// Array to save pokemon from API
 let pokemons = [];
 
 // Get main container from HTML
@@ -10,12 +11,12 @@ const pokeNames = document.getElementById('redirectName');
 // Get searchbox and button from HTML
 const searchInput = document.querySelector('#poke-input');
 const searchBtn = document.querySelector('.btn-search');
+const resetBtn = document.getElementById('bttnReset');
 
 // Pokemon API
 let url = 'https://pokeapi.co/api/v2/pokemon/'; 
  
-
-
+// Main function to get data from API
 let main = async() => {
     // Request 12 pokemons from the Pokemon API
     for (let i = 1; i <= 12; i++) {    
@@ -26,6 +27,7 @@ let main = async() => {
     showPokemons(pokemons);
 }
 
+// This function is like a template and control the rendering of pokemon and the search
 let showPokemons = (pokemonsList) => {
     pokeList.innerHTML = '';
     pokemonsList.forEach((element) => showPokemon(element));
@@ -71,6 +73,7 @@ let showPokemon = (pokeData) => {
     pokeList.append(div);
 };
 
+// Event to click button and search pokemon
 searchBtn.addEventListener('click', function(e) {
     // Prevent of auto reload
     e.preventDefault();
@@ -88,6 +91,13 @@ searchBtn.addEventListener('click', function(e) {
     });
     console.log(filterPokemon);
     showPokemons(filterPokemon);
+});
+
+// Reset button
+resetBtn.addEventListener('click', function(e) {
+
+    // Show initial pokemon
+    showPokemons(pokemons);
 });
 
 main();
