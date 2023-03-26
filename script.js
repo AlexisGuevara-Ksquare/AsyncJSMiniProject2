@@ -80,16 +80,18 @@ searchBtn.addEventListener('click', function(e) {
 
     let filterPokemon = [];
     
+    // Value of text box
     const search = searchInput.value.toLowerCase();
 
+    // Inserto into an array the value of the pokemon on search box
     pokemons.forEach(pokemon => {
-        console.log(pokemon.name, pokemon.name.includes(search));
 
         if(pokemon.name.includes(search)) {
             filterPokemon.push(pokemon);
         }
     });
-    console.log(filterPokemon);
+
+    // Send value to "template" function
     showPokemons(filterPokemon);
 });
 
@@ -100,4 +102,5 @@ resetBtn.addEventListener('click', function(e) {
     showPokemons(pokemons);
 });
 
+// Execute main function so all can works
 main();
